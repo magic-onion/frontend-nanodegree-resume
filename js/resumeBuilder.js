@@ -29,7 +29,7 @@
          "dates": 2016,
          "url": "http://www.udacity.com",
      }]
- }
+ };
 
  var work = {
      "jobs": [{
@@ -43,7 +43,7 @@
          "dates": "Aug 2014 - May 2015",
          "description": "A BETTER DESCRIPTION HERE"
      }]
- }
+ };
 
  var projects = {
      "projects": [{
@@ -51,12 +51,23 @@
          "dates": "2016",
          "description": "a description"
      }]
- }
+ };
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 
 $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
+
+var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+$("#header").append(formattedMobile);
+
+var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+$("header").append(formattedEmail);
+
+var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+$("header").append(formattedLocation);
+
+
  if (bio.skills.length > 0) {
 
      $("#header").append(HTMLskillsStart);
@@ -97,3 +108,28 @@ $("#header").prepend(formattedName);
 
  	return name[0] +" "+name[1];
  }
+
+ $('#main').append(internationalizeButton);
+
+ projects.display = function () {
+ 	for (project in projects.projects) {
+ 		$("#projects").append(HTMLprojectStart);
+
+ 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+ 		$(".project-entry:last").append(formattedTitle);
+
+ 		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+ 		$(".project-entry:last").append(formattedDates);
+
+ 		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+ 		$(".project-entry:last").append(formattedDescription);
+
+ 		if (projects.projects[project].images.length > 0) {
+ 			for (image in projects.projects[project].images) {
+ 				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
+ 				$(".project-entry:last").append(formattedImage);
+ 			}
+ 		}
+ 	}
+ }
+$("mapDiv").append(googleMap);
