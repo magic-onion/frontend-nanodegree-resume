@@ -1,7 +1,3 @@
- var welcomeMessage = {
-    "message" : "Hi Welcome Thanks Bye"
- };
-
  var bio = {
      "name": "Alex Truong",
      "role": "Web Developer",
@@ -64,12 +60,6 @@
      ]
  };
 
-welcomeMessage.display = function() {
-    var formattedMessage = HTMLwelcomeMsg.replace("%data%", welcomeMessage.message);
-    $("#header").append(formattedMessage);
-};
-
-welcomeMessage.display();
 
 bio.display = function() {
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -77,6 +67,9 @@ bio.display = function() {
 
     $("#header").prepend(formattedRole);
     $("#header").prepend(formattedName);
+
+    var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessag);
+    $("#header").append(formattedMessage);
 
     var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
     $("#topContacts").append(formattedMobile);
@@ -132,7 +125,7 @@ work.display();
 education.display = function() {
     education.schools.forEach(function(schools) {
         $("#education").append(HTMLschoolStart);
-        var formattedSchool = HTMLschoolName.replace("%data%", schools.name);
+        var formattedSchool = HTMLschoolName.replace("%data%", schools.name).replace("#", schools.url);
         $(".education-entry:last").append(formattedSchool);
         var formattedDegree = HTMLschoolDegree.replace("%data%", schools.degree);
         $(".education-entry:last").append(formattedDegree);
