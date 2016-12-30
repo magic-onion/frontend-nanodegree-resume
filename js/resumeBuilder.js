@@ -68,7 +68,7 @@ bio.display = function() {
     $("#header").prepend(formattedRole);
     $("#header").prepend(formattedName);
 
-    var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessag);
+    var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
     $("#header").append(formattedMessage);
 
     var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
